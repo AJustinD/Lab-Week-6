@@ -30,16 +30,23 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         
-        timer += Time.deltaTime;
-        int seconds = (int) timer % 60;
-        
+        timer += Time.deltaTime; 
         Time.timeScale = myTimeScale;
 
-        if(timer >= lastTime + 1)
+        // this is 60%
+        if(timer > lastTime)
         {
             Debug.Log(lastTime);
-            lastTime++;
+            lastTime = (int) timer + 1;
         }
+        
+        /* this is 40%
+        if (Time.time > lastTime)
+        {
+            Debug.Log(lastTime);
+            lastTime = (int) Time.time + 1;
+        }
+        */
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
